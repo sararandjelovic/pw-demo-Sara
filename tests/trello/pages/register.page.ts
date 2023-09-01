@@ -13,11 +13,11 @@ export class RegisterPage {
     this.passwordRegisterInput = page.locator('//input[@name="password"]');
     this.welcomeEmailCheckbox = page.locator('//input[@name="welcomeEmail"]');
     this.createAccountButton = page.locator('//button[@data-cy="signup-submit"]');
- }
+}
 
- async createUser(email: string, password: string) {
-    await this.emailRegisterInput.fill(email);
-    await this.passwordRegisterInput.fill(password);
+ async createUser(signUpEemail: string, signupPassword: string) {
+    await this.emailRegisterInput.fill(signUpEemail);
+    await this.passwordRegisterInput.fill(signupPassword);
     await this.welcomeEmailCheckbox.check();
     await this.createAccountButton.click();
  }

@@ -17,6 +17,9 @@ export class HomePage {
  readonly boardOptionsButton: Locator;
  readonly deleteBoardButton: Locator;
  readonly boardDeletedPopUp: Locator;
+ readonly userLoggedInPopUp: Locator;
+ readonly userLoggedOutPopUp: Locator;
+
 
  constructor(page: Page) {
     this.page = page;
@@ -35,6 +38,8 @@ export class HomePage {
     this.boardOptionsButton = page.locator('//button[@data-cy="board-options"]');
     this.deleteBoardButton = page.locator('//div[@data-cy="delete-board"]');
     this.boardDeletedPopUp = page.getByText('Board was deleted');
+    this.userLoggedInPopUp =  page.getByText('User is logged in');
+    this.userLoggedOutPopUp = page.getByText('User was logged out');
  }
 
  async createBoard(firstBoard: string){
