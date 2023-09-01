@@ -44,15 +44,18 @@ const testUserPassword = "123456";
       await expect(getStartedPage.invalidEmailPopup).toBeVisible();
     })
 
-    test('Create User for other tests', async ({page}) => {
+    // test('Create User for other tests', async ({page}) => {
+    //   await getStartedPage.loginButton.click();
+    //   await loginPage.signUpButton.click();
+    //   await registerPage.createUser(testUserEmail, testUserPassword);
+    //   await homePage.logOutButton.click();
+    // })
+
+    test('Create user with already used email', async ({page}) => {
       await getStartedPage.loginButton.click();
       await loginPage.signUpButton.click();
       await registerPage.createUser(testUserEmail, testUserPassword);
-      await homePage.logOutButton.click();
-    })
-
-    test('Create user with already used email', async ({page}) => {
-
+      await expect(homePage.emailExistsPopup).toBeVisible();
     })
     
 });

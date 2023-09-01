@@ -6,6 +6,8 @@ import { Utils } from './pages/utils';
 
 const testUserEmail = "test@test.com";
 const testUserPassword = "123456";
+const invalidEmail = "bad email";
+const invalidPassword = "bad password";
 
 test.describe('Login test', () => {
     let getStartedPage: GetStartedPage;
@@ -22,7 +24,7 @@ test.describe('Login test', () => {
     test('SignUp with the valid credentials and log out', async ({ page }) => {
         await expect(getStartedPage.getStartedText).toHaveText(' Get started! ');
         await getStartedPage.loginButton.click();
-        await loginPage.loginUser(testUserEmail,testUserPassword);
+        await loginPage.loginUser(testUserEmail, testUserPassword);
         await expect(homePage.userLoggedInPopUp).toBeVisible();
         await expect(homePage.logOutButton).toHaveText(testUserEmail);
         await homePage.logOutButton.click();
@@ -30,16 +32,9 @@ test.describe('Login test', () => {
     })
 
     test('SignUp with the invalid credentials', async ({ page }) => {
-        await expect(getStartedPage.getStartedText).toHaveText(' Get started! ');
         await getStartedPage.loginButton.click();
-        await loginPage.loginUser(testUserEmail,testUserPassword);
-        await expect(homePage.userLoggedInPopUp).toBeVisible();
-        await expect(homePage.logOutButton).toHaveText(testUserEmail);
-        await homePage.logOutButton.click();
-        await expect(homePage.userLoggedOutPopUp).toBeVisible();
+        await loginPage.loginUser(invalidEmail, invalidPassword);
+        await expect(homePage.invalidUserPopup).toBeVisible();
     })
-
-
-
 
 });
