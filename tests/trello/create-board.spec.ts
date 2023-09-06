@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
-import { GetStartedPage } from './pages/get-started.page';
+// import { GetStartedPage } from './pages/get-started.page';
 import { HomePage } from './pages/home.page';
 
 test.describe('Login test', () => {
-    let getStartedPage: GetStartedPage;
+    // let getStartedPage: GetStartedPage;
     let homePage: HomePage;
 
-    test.beforeEach(async ({ page }, testInfo) => {
-        getStartedPage = new GetStartedPage(page);
+    test.beforeEach(async ({ page }) => {
+        // getStartedPage = new GetStartedPage(page);
         homePage = new HomePage(page);
         await page.goto('/');
     });
@@ -17,7 +17,7 @@ test.describe('Login test', () => {
         await homePage.createList('First List');
         await homePage.createFirstCard('First Card');
         await homePage.addDesciption('Description for card');
-        
+
         const fileChooserPromise = page.waitForEvent('filechooser');
         await homePage.uploadImageButton.click();
         const fileChooser = await fileChooserPromise;
@@ -26,12 +26,9 @@ test.describe('Login test', () => {
         await expect(page.locator('//div[@data-cy="image-attachment"]')).toContainText('test.pdf');
 
         await homePage.addDueDate();
-
-        await homePage.addNewCard('Second Card');
+        await homePage.addNewCard('test');
         await homePage.deleteBoard();
-    })
-
+    });
 });
-
 
 

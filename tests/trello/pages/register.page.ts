@@ -21,4 +21,4 @@ export class RegisterPage {
     await this.welcomeEmailCheckbox.check();
     await this.createAccountButton.click();
  }
-};
+}

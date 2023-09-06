@@ -94,4 +94,4 @@ export class HomePage {
     await expect(this.boardDeletedPopUp).toBeVisible();
   }
 
-};
+}

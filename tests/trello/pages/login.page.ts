@@ -20,4 +20,4 @@ export class LoginPage {
    await this.passwordLoginInput.fill(password);
    await this.loginLoginPageButton.click();
 }
-};
+}

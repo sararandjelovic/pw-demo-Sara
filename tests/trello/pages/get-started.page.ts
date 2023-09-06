@@ -13,4 +13,4 @@ export class GetStartedPage {
     this.invalidEmailPopup = page.getByText('Email format is invalid');
 
  }
-};
+}
