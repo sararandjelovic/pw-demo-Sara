@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "e2e": "npx playwright test",
+    "e2e-headed": "npx playwright test tests/trello --headed",
+    "e2e-debug": "npx playwright test tests/trello --debug",
+    "eslint": "eslint ./tests/trello",
+    "eslint:fix": "eslint --fix ./tests/trello"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
