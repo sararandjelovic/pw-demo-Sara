@@ -43,15 +43,15 @@ import users from './data/user-data';
       await expect(getStartedPage.invalidEmailPopup).toBeVisible();
     })
 
-    // test('Create User for other tests', async () => {
-    //   await getStartedPage.loginButton.click();
-    //   await loginPage.signUpButton.click();
-    //   await registerPage.createUser(
-    //     users.testUser.Email,
-    //     users.testUser.Password
-    //   );
-    //   await homePage.logOutButton.click();
-    // })
+    test('Create User for other tests', async () => {
+      await getStartedPage.loginButton.click();
+      await loginPage.signUpButton.click();
+      await registerPage.createUser(
+        users.testUser.Email,
+        users.testUser.Password
+      );
+      await homePage.logOutButton.click();
+    })
 
     test('Create user with already used email', async () => {
       await getStartedPage.loginButton.click();
