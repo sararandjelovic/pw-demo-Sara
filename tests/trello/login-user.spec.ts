@@ -19,16 +19,22 @@ test.describe('Login test', () => {
     test('SignUp with the valid credentials and log out', async () => {
         await expect(getStartedPage.getStartedText).toHaveText(' Get started! ');
         await getStartedPage.loginButton.click();
-        await loginPage.loginUser(users.testUserEmail, users.testUserPassword);
+        await loginPage.loginUser(
+            users.validUser.Email,
+            users.validUser.Password
+    );
         await expect(homePage.userLoggedInPopUp).toBeVisible();
-        await expect(homePage.logOutButton).toHaveText(users.testUserEmail);
+        await expect(homePage.logOutButton).toHaveText(users.validUser.Email);
         await homePage.logOutButton.click();
         await expect(homePage.userLoggedOutPopUp).toBeVisible();
     })
 
     test('SignUp with the invalid credentials', async () => {
         await getStartedPage.loginButton.click();
-        await loginPage.loginUser(users.invalidEmail, users.invalidPassword);
+        await loginPage.loginUser(
+            users.invalidUser.Email,
+            users.invalidUser.Password
+        );
         await expect(homePage.invalidUserPopup).toBeVisible();
     })
 

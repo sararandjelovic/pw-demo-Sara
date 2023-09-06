@@ -23,9 +23,12 @@ import users from './data/user-data';
     test('SignUp with the valid credentials and log out', async () => {
       await getStartedPage.loginButton.click();
       await loginPage.signUpButton.click();
-      await registerPage.createUser(users.signUpEemail, users.signupPassword);
+      await registerPage.createUser(
+        users.validUser.Email,
+        users.validUser.Password
+      );
       await expect(homePage.userLoggedInPopUp).toBeVisible();
-      await expect(homePage.logOutButton).toHaveText(users.signUpEemail);
+      await expect(homePage.logOutButton).toHaveText(users.validUser.Email);
       await homePage.logOutButton.click();
       await expect(homePage.userLoggedOutPopUp).toBeVisible();
     });
@@ -33,21 +36,30 @@ import users from './data/user-data';
     test('SignUp with invalid credenitals', async () => {
       await getStartedPage.loginButton.click();
       await loginPage.signUpButton.click();
-      await registerPage.createUser(users.invalidEmail, users.invalidPassword);
+      await registerPage.createUser(
+        users.invalidUser.Email,
+        users.invalidUser.Password
+      );
       await expect(getStartedPage.invalidEmailPopup).toBeVisible();
     })
 
     // test('Create User for other tests', async () => {
     //   await getStartedPage.loginButton.click();
     //   await loginPage.signUpButton.click();
-    //   await registerPage.createUser(users.testUserEmail, users.testUserPassword);
+    //   await registerPage.createUser(
+    //     users.testUser.Email,
+    //     users.testUser.Password
+    //   );
     //   await homePage.logOutButton.click();
     // })
 
     test('Create user with already used email', async () => {
       await getStartedPage.loginButton.click();
       await loginPage.signUpButton.click();
-      await registerPage.createUser(users.testUserEmail, users.testUserPassword);
+      await registerPage.createUser(
+        users.testUser.Email,
+        users.testUser.Password
+      );
       await expect(homePage.emailExistsPopup).toBeVisible();
     })
     
